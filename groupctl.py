@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Group collaboration protocol 0.1. Python 3.10+, Git; no API or server."""
+"""Group collaboration protocol 0.1. Requires Python 3.10+ and Git; GitHub hosts shared collaboration data."""
 import argparse
 import datetime as dt
 import json
