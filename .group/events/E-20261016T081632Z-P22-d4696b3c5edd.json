@@ -1,0 +1,21 @@
+{
+  "change_id": "C-P17-a1479e680585",
+  "verdict": "accept",
+  "summary": "Reviewed exact published commit 486931d079fb9c170ec4f37a39e67bca58c343e1, actual diff, surrounding event discovery/emission/CLI handling, and protocol 0.1. No blocking defects found. Required text and string-list checks provide Error diagnostics without changing field names or event meanings; optional extensions and unspecified test_evidence element schemas remain supported. P22 STATUS filtering consumes unchanged event commit fields, so no interface incompatibility was found by inspection. Isolated build and all 16 tests passed. This review does not merge the change or certify an untested combined P17/P22 snapshot.",
+  "issues": [],
+  "tests_run": [
+    "groupctl test C-P17-a1479e680585: isolated exact commit; py_compile passed; unittest discover passed (16 tests, 2 check commands total).",
+    "Loaded validate() from exact published commit and validated all 3 discovered published events, including the P22 change_published event: passed.",
+    "git diff df1512e 486931d --check: passed."
+  ],
+  "protocol_version": "0.1",
+  "event_id": "E-20261016T081632Z-P22-d4696b3c5edd",
+  "event_type": "review",
+  "group_id": "G01",
+  "person_id": "P22",
+  "created_at": "2026-10-16T08:16:32.656365Z",
+  "related_events": [
+    "E-20261016T075535Z-P17-89358cfc363b",
+    "E-20261016T081559Z-P22-5b027b241299"
+  ]
+}
