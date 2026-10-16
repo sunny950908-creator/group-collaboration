@@ -180,12 +180,15 @@ class Repo:
         canonical=self.sha('origin/'+self.canonical)
         ev=self.events()
         seen=read(self.local/'sync.json').get('seen',[]) if (self.local/'sync.json').exists() else []
-        return dict(person_id=self.person,group_id=self.cfg['group_id'],branch=self.branch(),commit=self.sha(),
+        head=self.sha()
+        test_results=[e for e in ev if e['event_type']=='test_result']
+        return dict(person_id=self.person,group_id=self.cfg['group_id'],branch=self.branch(),commit=head,
                     canonical_commit=canonical,working_tree=self.git('status','--porcelain').stdout,
                     ahead_behind=self.git('rev-list','--left-right','--count','HEAD...'+canonical).stdout.strip(),
                     new_events=[e for e in ev if e['event_id'] not in seen],
                     published_local_changes=[e for e in ev if e['event_type']=='change_published' and e['person_id']==self.person],
-                    test_results=[e for e in ev if e['event_type']=='test_result'],
+                    test_results=test_results,
+                    current_commit_test_results=[e for e in test_results if e['commit']==head],
                     blockers=[e for e in ev if e['event_type']=='blocker'],
                     next_action='Inspect new events and blockers; SYNC before integration. Test evidence applies only to its recorded commit.')
 
