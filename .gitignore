@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 .group/local/*
 !.group/local/.gitkeep
+
+.group/local/*
+!.group/local/.gitkeep
+__pycache__/
+*.pyc

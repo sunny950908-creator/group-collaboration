@@ -1,0 +1,14 @@
+{
+  "protocol_version": "0.1",
+  "group_id": "G01",
+  "canonical_branch": "main",
+  "assignment_file": ".group/assignment/assignment.md",
+  "checks": {
+    "build": [
+      ["{python}", "-m", "py_compile", "groupctl.py", "demo.py"]
+    ],
+    "tests": [
+      ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"]
+    ]
+  }
+}
