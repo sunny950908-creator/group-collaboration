@@ -229,7 +229,7 @@ class Repo:
                             raise Error('Check commands must be nonempty argv arrays')
                         argv=[sys.executable if a=='{python}' else a for a in argv]
                         try:
-                            p=subprocess.run(argv,cwd=work,text=True,encoding='utf-8',errors='replace',capture_output=True,timeout=120)
+                            p=subprocess.run(argv,cwd=work,text=True,encoding='utf-8',errors='replace',capture_output=True,timeout=300)
                             results.append(dict(category=category,argv=argv,exit_code=p.returncode,output=(p.stdout+p.stderr)[-20000:]))
                         except (OSError,subprocess.TimeoutExpired) as ex:
                             results.append(dict(category=category,argv=argv,exit_code=None,output=str(ex)))
