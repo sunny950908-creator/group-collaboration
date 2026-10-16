@@ -1,0 +1,14 @@
+test_missing_fields_and_invalid_enums (__main__.Validation.test_missing_fields_and_invalid_enums) ... ok
+test_dirty_work_is_preserved (__main__.Workflow.test_dirty_work_is_preserved) ... ok
+test_final_rejects_code_changed_after_candidate (__main__.Workflow.test_final_rejects_code_changed_after_candidate) ... ok
+test_full_three_person_conflict_final (__main__.Workflow.test_full_three_person_conflict_final) ... ok
+test_no_checks_not_claimed_pass (__main__.Workflow.test_no_checks_not_claimed_pass) ... ok
+test_pending_change_blocks_final (__main__.Workflow.test_pending_change_blocks_final) ... ok
+test_review_does_not_merge_and_status_is_readonly (__main__.Workflow.test_review_does_not_merge_and_status_is_readonly) ... ok
+test_secret_filename_refused (__main__.Workflow.test_secret_filename_refused) ... ok
+test_semantic_incompatibility_despite_clean_merge (__main__.Workflow.test_semantic_incompatibility_despite_clean_merge) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.109s
+
+OK

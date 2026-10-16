@@ -1,0 +1,429 @@
+[
+  {
+    "change_id": "C-P17-d58b03e79888",
+    "branch": "people/P17/work",
+    "commit": "9901ba43d300ff2c624d348748e3b62d8c65caa5",
+    "summary": "A improves greeting",
+    "files_changed": [
+      "app.py"
+    ],
+    "interface_changes": [],
+    "tests_run": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+    ],
+    "known_issues": [],
+    "proposed_for_integration": true,
+    "quick_validation": {
+      "scope": "HEAD",
+      "commit": "9901ba43d300ff2c624d348748e3b62d8c65caa5",
+      "commands": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+      ],
+      "automated_result": "pass",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "human_checks_required": [],
+      "summary": "Counts refer to check commands; see command_results for actual runner output.",
+      "count_unit": "check_commands",
+      "command_results": [
+        {
+          "category": "build",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "-m",
+            "py_compile",
+            "app.py"
+          ],
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "category": "tests",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "check.py"
+          ],
+          "exit_code": 0,
+          "output": "2 checks passed\n"
+        }
+      ]
+    },
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062707Z-P17-d9ce58a84954",
+    "event_type": "change_published",
+    "group_id": "G-DEMO",
+    "person_id": "P17",
+    "created_at": "2026-10-16T06:27:07.171849Z",
+    "related_events": []
+  },
+  {
+    "change_id": "C-P22-ae1794087747",
+    "branch": "people/P22/work",
+    "commit": "d9b95cf6865c20bcb49cd2ba3b119a72baa14937",
+    "summary": "B updates count",
+    "files_changed": [
+      "app.py"
+    ],
+    "interface_changes": [],
+    "tests_run": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+    ],
+    "known_issues": [],
+    "proposed_for_integration": true,
+    "quick_validation": {
+      "scope": "HEAD",
+      "commit": "d9b95cf6865c20bcb49cd2ba3b119a72baa14937",
+      "commands": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+      ],
+      "automated_result": "pass",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "human_checks_required": [],
+      "summary": "Counts refer to check commands; see command_results for actual runner output.",
+      "count_unit": "check_commands",
+      "command_results": [
+        {
+          "category": "build",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "-m",
+            "py_compile",
+            "app.py"
+          ],
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "category": "tests",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "check.py"
+          ],
+          "exit_code": 0,
+          "output": "2 checks passed\n"
+        }
+      ]
+    },
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062707Z-P22-e3693fa59063",
+    "event_type": "change_published",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:07.375673Z",
+    "related_events": []
+  },
+  {
+    "change_id": "C-P17-d58b03e79888",
+    "target_branch": "people/P22/work",
+    "result": "success",
+    "merge_commit": "f4c8170f1e804a4226af125ed442d0aa37e2ca18",
+    "conflicts": [],
+    "conflict_resolution_summary": "Separate functions; greeting and count contracts preserved",
+    "verification": {
+      "build": "pass",
+      "tests": "pass",
+      "semantic_review": "pass"
+    },
+    "summary": "Separate functions; greeting and count contracts preserved",
+    "incorporated": true,
+    "validation": {
+      "scope": "HEAD",
+      "commit": "f4c8170f1e804a4226af125ed442d0aa37e2ca18",
+      "commands": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+      ],
+      "automated_result": "pass",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "human_checks_required": [],
+      "summary": "Counts refer to check commands; see command_results for actual runner output.",
+      "count_unit": "check_commands",
+      "command_results": [
+        {
+          "category": "build",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "-m",
+            "py_compile",
+            "app.py"
+          ],
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "category": "tests",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "check.py"
+          ],
+          "exit_code": 0,
+          "output": "2 checks passed\n"
+        }
+      ]
+    },
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062707Z-P22-508e775fac6f",
+    "event_type": "integration_result",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:07.699747Z",
+    "related_events": [
+      "E-20261016T062707Z-P17-d9ce58a84954"
+    ]
+  },
+  {
+    "change_id": "C-P31-bc2328fa258f",
+    "branch": "people/P31/work",
+    "commit": "0d0614a1b94f3e5fe30f99af883a8591c088eb62",
+    "summary": "C changes greeting wording",
+    "files_changed": [
+      "app.py"
+    ],
+    "interface_changes": [],
+    "tests_run": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+    ],
+    "known_issues": [],
+    "proposed_for_integration": true,
+    "quick_validation": {
+      "scope": "HEAD",
+      "commit": "0d0614a1b94f3e5fe30f99af883a8591c088eb62",
+      "commands": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+      ],
+      "automated_result": "pass",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "human_checks_required": [],
+      "summary": "Counts refer to check commands; see command_results for actual runner output.",
+      "count_unit": "check_commands",
+      "command_results": [
+        {
+          "category": "build",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "-m",
+            "py_compile",
+            "app.py"
+          ],
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "category": "tests",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "check.py"
+          ],
+          "exit_code": 0,
+          "output": "2 checks passed\n"
+        }
+      ]
+    },
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062707Z-P31-afbe334f2b5d",
+    "event_type": "change_published",
+    "group_id": "G-DEMO",
+    "person_id": "P31",
+    "created_at": "2026-10-16T06:27:07.865258Z",
+    "related_events": []
+  },
+  {
+    "change_id": "C-P31-bc2328fa258f",
+    "target_branch": "people/P22/work",
+    "result": "success",
+    "merge_commit": "5a0d30c8950e72079c309677a9c997daac6ae2bf",
+    "conflicts": [
+      "app.py"
+    ],
+    "conflict_resolution_summary": "Combined both wording intents: welcome team; count remains 2",
+    "verification": {
+      "build": "pass",
+      "tests": "pass",
+      "semantic_review": "pass"
+    },
+    "summary": "Combined both wording intents: welcome team; count remains 2",
+    "incorporated": true,
+    "validation": {
+      "scope": "HEAD",
+      "commit": "5a0d30c8950e72079c309677a9c997daac6ae2bf",
+      "commands": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+      ],
+      "automated_result": "pass",
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "human_checks_required": [],
+      "summary": "Counts refer to check commands; see command_results for actual runner output.",
+      "count_unit": "check_commands",
+      "command_results": [
+        {
+          "category": "build",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "-m",
+            "py_compile",
+            "app.py"
+          ],
+          "exit_code": 0,
+          "output": ""
+        },
+        {
+          "category": "tests",
+          "argv": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+            "check.py"
+          ],
+          "exit_code": 0,
+          "output": "2 checks passed\n"
+        }
+      ]
+    },
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062708Z-P22-fa506525df39",
+    "event_type": "integration_result",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:08.101841Z",
+    "related_events": [
+      "E-20261016T062707Z-P31-afbe334f2b5d"
+    ]
+  },
+  {
+    "scope": "HEAD",
+    "commit": "c4d77a1936e65dc92b9af73b2ae1279d71004fc5",
+    "commands": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+    ],
+    "automated_result": "pass",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "human_checks_required": [],
+    "summary": "Counts refer to check commands; see command_results for actual runner output.",
+    "count_unit": "check_commands",
+    "command_results": [
+      {
+        "category": "build",
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-m",
+          "py_compile",
+          "app.py"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "category": "tests",
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "check.py"
+        ],
+        "exit_code": 0,
+        "output": "2 checks passed\n"
+      }
+    ],
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062708Z-P22-0b8e9f5e3fec",
+    "event_type": "test_result",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:08.236823Z",
+    "related_events": []
+  },
+  {
+    "scope": "37ce7fcdda3a3e20bb3e8532106738fdcc3a9645",
+    "commit": "37ce7fcdda3a3e20bb3e8532106738fdcc3a9645",
+    "commands": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m py_compile app.py",
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python check.py"
+    ],
+    "automated_result": "pass",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "human_checks_required": [],
+    "summary": "Counts refer to check commands; see command_results for actual runner output.",
+    "count_unit": "check_commands",
+    "command_results": [
+      {
+        "category": "build",
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "-m",
+          "py_compile",
+          "app.py"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "category": "tests",
+        "argv": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+          "check.py"
+        ],
+        "exit_code": 0,
+        "output": "2 checks passed\n"
+      }
+    ],
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062708Z-P22-76e4d97ca687",
+    "event_type": "test_result",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:08.481251Z",
+    "related_events": []
+  },
+  {
+    "canonical_commit": "37ce7fcdda3a3e20bb3e8532106738fdcc3a9645",
+    "candidate_report_path": ".group/final/candidate.md",
+    "test_evidence": [
+      "E-20261016T062708Z-P22-76e4d97ca687"
+    ],
+    "known_issues": [],
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062708Z-P22-796616eaad22",
+    "event_type": "final_candidate",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:08.543196Z",
+    "related_events": []
+  },
+  {
+    "canonical_commit": "37ce7fcdda3a3e20bb3e8532106738fdcc3a9645",
+    "final_report_path": ".group/final/final_report.md",
+    "test_evidence": [
+      "E-20261016T062708Z-P22-76e4d97ca687"
+    ],
+    "known_limitations": [
+      "Local bare-remote demonstration; GitHub hosting not exercised."
+    ],
+    "initiated_by": "P22",
+    "protocol_version": "0.1",
+    "event_id": "E-20261016T062708Z-P22-df1e1dcd4d56",
+    "event_type": "final_result",
+    "group_id": "G-DEMO",
+    "person_id": "P22",
+    "created_at": "2026-10-16T06:27:08.743395Z",
+    "related_events": [
+      "E-20261016T062708Z-P22-796616eaad22"
+    ]
+  }
+]

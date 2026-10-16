@@ -1,0 +1,30 @@
+* f2cc6bb (HEAD -> main, origin/main, origin/HEAD) group: final_result E-20261016T062708Z-P22-df1e1dcd4d56
+* 396ae1a group: confirmed final report
+* eb964f6 human-reviewed candidate
+* 32829e8 group: final_candidate E-20261016T062708Z-P22-796616eaad22
+* bd20a23 group: final candidate report
+* 39c0726 group: test_result E-20261016T062708Z-P22-76e4d97ca687
+*   37ce7fc Merge branch 'people/P22/work'
+|\  
+| * ecdbb6e (origin/people/P22/work, people/P22/work) group: test_result E-20261016T062708Z-P22-0b8e9f5e3fec
+| * c4d77a1 group: integration_result E-20261016T062708Z-P22-fa506525df39
+| *   5a0d30c resolve greeting: preserve welcome and team intent
+| |\  
+| * | 354cc3b group: integration_result E-20261016T062707Z-P22-508e775fac6f
+| * |   f4c8170 Merge commit '9901ba43d300ff2c624d348748e3b62d8c65caa5' into people/P22/work
+| |\ \  
+| * | | 50602e3 group: change_published E-20261016T062707Z-P22-e3693fa59063
+| * | | d9b95cf B updates count
+|/ / /  
+| | | * 810a287 (origin/people/P17/work) group: change_published E-20261016T062707Z-P17-d9ce58a84954
+| | |/  
+| |/|   
+| * | 9901ba4 A improves greeting
+|/ /  
+| | * 66674d8 (origin/people/P31/work) group: change_published E-20261016T062707Z-P31-afbe334f2b5d
+| |/  
+| * 0d0614a C changes greeting wording
+|/  
+* 8c572f2 register P31
+* 7c89e9d register P22
+* ff6d24b initial

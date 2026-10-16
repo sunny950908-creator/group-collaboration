@@ -1,0 +1,13 @@
+{
+  "protocol_version": "0.1",
+  "group_id": "G-DEMO",
+  "canonical_branch": "main",
+  "canonical_commit": "37ce7fcdda3a3e20bb3e8532106738fdcc3a9645",
+  "report_file": ".group/final/final_report.md",
+  "initiated_by": "P22",
+  "created_at": "2026-10-16T06:27:08.716843Z",
+  "status": "completed_with_known_limitations",
+  "known_limitations": [
+    "Local bare-remote demonstration; GitHub hosting not exercised."
+  ]
+}
