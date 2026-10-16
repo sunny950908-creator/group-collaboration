@@ -1,0 +1,70 @@
+{
+  "change_id": "C-P31-97f9804a1573",
+  "branch": "people/P31/work",
+  "commit": "f83cfc8112f57a54a928174237632dbf71cbae89",
+  "summary": "P31 deliberate Git conflict demonstration: change only the single-line module docstring to retain protocol 0.1, require Python 3.10+ and Git, and explain GitHub hosts shared collaboration data. Actual diff and --help reviewed; no functional changes.",
+  "files_changed": [
+    "groupctl.py"
+  ],
+  "interface_changes": [
+    "CLI help description clarifies requirements and GitHub use; protocol 0.1 interfaces and behavior unchanged."
+  ],
+  "tests_run": [
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m py_compile groupctl.py demo.py",
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m unittest discover -s tests -v"
+  ],
+  "known_issues": [
+    "Intentional same-line conflict demonstration: a later integration with another member's docstring edit is expected to require deliberate conflict resolution. Other members' feature branches remain unmerged here."
+  ],
+  "proposed_for_integration": true,
+  "quick_validation": {
+    "scope": "HEAD",
+    "commit": "f83cfc8112f57a54a928174237632dbf71cbae89",
+    "commands": [
+      "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m py_compile groupctl.py demo.py",
+      "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m unittest discover -s tests -v"
+    ],
+    "automated_result": "pass",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "human_checks_required": [],
+    "summary": "Counts refer to check commands; see command_results for actual runner output.",
+    "count_unit": "check_commands",
+    "command_results": [
+      {
+        "category": "build",
+        "argv": [
+          "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "-m",
+          "py_compile",
+          "groupctl.py",
+          "demo.py"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "category": "tests",
+        "argv": [
+          "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "output": "test_missing_fields_and_invalid_enums (test_workflow.Validation.test_missing_fields_and_invalid_enums) ... ok\ntest_dirty_work_is_preserved (test_workflow.Workflow.test_dirty_work_is_preserved) ... ok\ntest_final_rejects_code_changed_after_candidate (test_workflow.Workflow.test_final_rejects_code_changed_after_candidate) ... ok\ntest_full_three_person_conflict_final (test_workflow.Workflow.test_full_three_person_conflict_final) ... ok\ntest_no_checks_not_claimed_pass (test_workflow.Workflow.test_no_checks_not_claimed_pass) ... ok\ntest_pending_change_blocks_final (test_workflow.Workflow.test_pending_change_blocks_final) ... ok\ntest_review_does_not_merge_and_status_is_readonly (test_workflow.Workflow.test_review_does_not_merge_and_status_is_readonly) ... ok\ntest_secret_filename_refused (test_workflow.Workflow.test_secret_filename_refused) ... ok\ntest_semantic_incompatibility_despite_clean_merge (test_workflow.Workflow.test_semantic_incompatibility_despite_clean_merge) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 84.740s\n\nOK\n"
+      }
+    ]
+  },
+  "protocol_version": "0.1",
+  "event_id": "E-20261016T083035Z-P31-4a6e234026c3",
+  "event_type": "change_published",
+  "group_id": "G01",
+  "person_id": "P31",
+  "created_at": "2026-10-16T08:30:35.880719Z",
+  "related_events": []
+}
