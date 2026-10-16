@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Group collaboration protocol 0.1. Python 3.10+, Git; no API or server."""
+"""Group collaboration protocol 0.1. Helps multiple student + local AI pairs collaborate through Git; AI provides judgment and the tool performs repeatable mechanical operations. Requires Python 3.10+ and Git; no API or server."""
 import argparse
 import datetime as dt
 import json
