@@ -50,24 +50,43 @@ ENUMS = {'verdict': ['accept','accept_with_changes','reject','needs_more_evidenc
          'automated_result': ['pass','fail','partial','not_available'],
          'result': ['success','failed','needs_human']}
 LISTS = 'related_events files_changed interface_changes tests_run known_issues evidence issues commands human_checks_required conflicts test_evidence known_limitations'.split()
+# Finalization evidence has no prescribed element schema in protocol 0.1.
+STRING_LISTS = [k for k in LISTS if k != 'test_evidence']
+TEXT_FIELDS = 'protocol_version event_id event_type group_id person_id created_at change_id branch commit summary question_id text verdict scope automated_result target_branch result merge_commit conflict_resolution_summary blocking_change_id requested_action canonical_commit candidate_report_path final_report_path initiated_by'.split()
 
 def validate(e):
+    if not isinstance(e, dict):
+        raise Error('Event must be an object')
     common = 'protocol_version event_id event_type group_id person_id created_at related_events'.split()
     kind = e.get('event_type')
+    if not isinstance(kind, str):
+        raise Error('event_type must be a string')
     if kind not in FIELDS:
         raise Error('Unsupported event_type')
     for k in common + FIELDS[kind].split():
         if k not in e:
             raise Error('Missing field: ' + k)
+    required = common + FIELDS[kind].split()
+    for k in TEXT_FIELDS:
+        if k in required and not isinstance(e[k], str):
+            raise Error(k + ' must be a string')
     if e['protocol_version'] != '0.1':
         raise Error('Unsupported protocol version')
     for k in ['event_id','person_id','group_id']:
         token(e[k])
-    if dt.datetime.fromisoformat(e['created_at'].replace('Z','+00:00')).tzinfo is None:
+    try:
+        timestamp = dt.datetime.fromisoformat(e['created_at'].replace('Z','+00:00'))
+    except ValueError as exc:
+        raise Error('created_at must be a valid ISO timestamp') from exc
+    if timestamp.tzinfo is None:
         raise Error('Timestamp must include timezone')
     for k in LISTS:
         if k in e and not isinstance(e[k], list):
             raise Error(k + ' must be an array')
+        if k in required and k in STRING_LISTS:
+            for i, value in enumerate(e[k]):
+                if not isinstance(value, str):
+                    raise Error(f'{k}[{i}] must be a string')
     for k, values in ENUMS.items():
         if k in e and e[k] not in values:
             raise Error('Invalid ' + k)
@@ -80,6 +99,9 @@ def validate(e):
     if kind == 'integration_result':
         if not isinstance(e['verification'], dict) or not all(k in e['verification'] for k in ['build','tests','semantic_review']):
             raise Error('Incomplete verification')
+        for k in ['build','tests','semantic_review']:
+            if not isinstance(e['verification'][k], str):
+                raise Error('verification.' + k + ' must be a string')
 
 class Repo:
     def __init__(self, path='.'):
