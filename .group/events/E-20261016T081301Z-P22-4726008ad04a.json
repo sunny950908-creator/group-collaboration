@@ -1,0 +1,72 @@
+{
+  "change_id": "C-P22-c33929e7e475",
+  "branch": "people/P22/work",
+  "commit": "fb70f4949376098ec359c6d6466c62c23121b0be",
+  "summary": "P22: distinguish exact-HEAD test evidence in STATUS; add cross-commit regression coverage and Traditional Chinese documentation.",
+  "files_changed": [
+    "docs/STATUS_ZH_TW.md",
+    "groupctl.py",
+    "tests/test_workflow.py"
+  ],
+  "interface_changes": [
+    "Add current_commit_test_results to STATUS JSON: only published test_result events whose commit exactly equals HEAD; return [] when none match. Existing test_results and protocol 0.1 event semantics are unchanged."
+  ],
+  "tests_run": [
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m py_compile groupctl.py demo.py",
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m unittest discover -s tests -v"
+  ],
+  "known_issues": [
+    "Exact-commit evidence does not cover uncommitted edits or establish semantic approval; publishing a test event advances HEAD, so the new field may be empty afterward."
+  ],
+  "proposed_for_integration": true,
+  "quick_validation": {
+    "scope": "HEAD",
+    "commit": "fb70f4949376098ec359c6d6466c62c23121b0be",
+    "commands": [
+      "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m py_compile groupctl.py demo.py",
+      "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m unittest discover -s tests -v"
+    ],
+    "automated_result": "pass",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "human_checks_required": [],
+    "summary": "Counts refer to check commands; see command_results for actual runner output.",
+    "count_unit": "check_commands",
+    "command_results": [
+      {
+        "category": "build",
+        "argv": [
+          "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "-m",
+          "py_compile",
+          "groupctl.py",
+          "demo.py"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      {
+        "category": "tests",
+        "argv": [
+          "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-v"
+        ],
+        "exit_code": 0,
+        "output": "test_missing_fields_and_invalid_enums (test_workflow.Validation.test_missing_fields_and_invalid_enums) ... ok\ntest_dirty_work_is_preserved (test_workflow.Workflow.test_dirty_work_is_preserved) ... ok\ntest_final_rejects_code_changed_after_candidate (test_workflow.Workflow.test_final_rejects_code_changed_after_candidate) ... ok\ntest_full_three_person_conflict_final (test_workflow.Workflow.test_full_three_person_conflict_final) ... ok\ntest_no_checks_not_claimed_pass (test_workflow.Workflow.test_no_checks_not_claimed_pass) ... ok\ntest_pending_change_blocks_final (test_workflow.Workflow.test_pending_change_blocks_final) ... ok\ntest_review_does_not_merge_and_status_is_readonly (test_workflow.Workflow.test_review_does_not_merge_and_status_is_readonly) ... ok\ntest_secret_filename_refused (test_workflow.Workflow.test_secret_filename_refused) ... ok\ntest_semantic_incompatibility_despite_clean_merge (test_workflow.Workflow.test_semantic_incompatibility_despite_clean_merge) ... ok\ntest_status_test_evidence_requires_exact_head (test_workflow.Workflow.test_status_test_evidence_requires_exact_head) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 97.424s\n\nOK\n"
+      }
+    ]
+  },
+  "protocol_version": "0.1",
+  "event_id": "E-20261016T081301Z-P22-4726008ad04a",
+  "event_type": "change_published",
+  "group_id": "G01",
+  "person_id": "P22",
+  "created_at": "2026-10-16T08:13:01.684027Z",
+  "related_events": []
+}
