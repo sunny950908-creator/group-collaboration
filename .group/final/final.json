@@ -1,0 +1,18 @@
+{
+  "protocol_version": "0.1",
+  "group_id": "G01",
+  "canonical_branch": "main",
+  "canonical_commit": "305dd57ab19facee20f3c0169a7b98f2456641bd",
+  "report_file": ".group/final/final_report.md",
+  "initiated_by": "P22",
+  "created_at": "2026-10-18T16:35:13.822562Z",
+  "status": "completed_with_known_limitations",
+  "known_limitations": [
+    "本次是一位實際操作者模擬三個成員身分，不是三位真人獨立操作；三份 clone、三個本機 AI 對話與真正 GitHub 操作不能證明三位真人的獨立協作。",
+    "GitHub 示範實際完成正常合併與刻意 docstring 衝突；「無文字衝突但行為不相容」由自動化測試在臨時本機 Git 儲存庫重現，未在本次 GitHub 功能分支另做同一案例。",
+    "自動化測試中的三人流程、衝突修復及確認動作是腳本模擬，只證明流程機制；不等同此次實際使用者的人類確認。",
+    "型別驗證不證明事件聲明真實。`test_evidence` 只保留陣列要求，不強加未定義的元素格式；系統假設可信組員，不提供安全認證或防惡意改寫歷史機制。",
+    "STATUS 的精確證據不涵蓋未提交修改；發布事件或只改文件也會形成新提交，因此 `current_commit_test_results` 可能為空。空陣列不表示測試失敗，非空也不代表全部通過。",
+    "300 秒為每個檢查命令的上限，不保證任何環境都足夠。測試通過不能證明沒有所有可能錯誤；本次沒有完整跨平台環境矩陣、GUI 或負載測試。"
+  ]
+}
