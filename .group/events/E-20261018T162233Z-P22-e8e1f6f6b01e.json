@@ -1,0 +1,15 @@
+{
+  "canonical_commit": "88754814b70f77ff21cbcdb324d516cab7f7957c",
+  "candidate_report_path": ".group/final/candidate.md",
+  "test_evidence": [
+    "E-20261018T162229Z-P22-ba0a6ce30f9e"
+  ],
+  "known_issues": [],
+  "protocol_version": "0.1",
+  "event_id": "E-20261018T162233Z-P22-e8e1f6f6b01e",
+  "event_type": "final_candidate",
+  "group_id": "G01",
+  "person_id": "P22",
+  "created_at": "2026-10-18T16:22:33.708054Z",
+  "related_events": []
+}
