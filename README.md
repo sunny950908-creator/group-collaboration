@@ -44,8 +44,9 @@ SYNC/PUB/INT/REV/TEST/STATUS/FINAL 是對 AI 說的提示指令；終端機執�
 
 ## 驗證範圍與限制
 
-已在 Linux + Python + Git 實測；未在 Windows 執行驗證。程式使用跨平台標準函式庫，Windows 指令已提供。
-本次沒有連接使用者 GitHub，沒有替使用者真正提交小組成果。正式驗收仍須在你們共用的 GitHub repository 重跑真人＋AI 流程。
+初版本機測試記錄包含 Linux；本次課程示範另已在 Windows、Python 3.14.3、Git 2.55.0.windows.3 執行編譯與完整測試，17 個測試通過。實際結果應依 `.group/events/` 中各次測試的精確 commit 與命令輸出判讀，不將其他版本的結果視為目前 HEAD 的證據；尚無完整跨平台環境矩陣。
+已使用真正 GitHub 儲存庫 https://github.com/sunny950908-creator/group-collaboration 完成發布、遠端事件探索、審查、正常整合、刻意 docstring 衝突與解決、測試證據發布及 canonical main 接受。示範由一位實際操作者管理三份獨立 clone、三個本機 AI 對話，以 P17／P22／P31 模擬三個角色，不代表三位真人參與。具體 change_id、整合事件與版本對照見 `.group/final/candidate.md`；結案程序仍依人類審閱確認規則執行。
+「無文字衝突但行為不相容」由 `test_semantic_incompatibility_despite_clean_merge` 在臨時本機 Git 儲存庫重現，未另外在 GitHub 功能分支示範。`demo.py` 的本機 bare remote 與腳本模擬結果，應與上述實際 GitHub 操作分開描述。
 工具不自行產生 AI 語意判斷、不串接任何 AI API、不做 Dispatcher 或跨組任務分配。私有本機狀態不進 Git。敏感檔案偵測是輔助，AI/人仍須審查。
 測試統計數字是「執行的檢查命令」數量，不是假裝取得測試框架內部案例數。
 事件修改偵測依賴已取得的 Git 歷史；系統假設可信組員，不提供安全身分授權或防惡意改寫歷史機制。
