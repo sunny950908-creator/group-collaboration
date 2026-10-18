@@ -1,0 +1,50 @@
+{
+  "scope": "origin/main",
+  "commit": "e872065abd397f51027edc8681161762acc7b08b",
+  "commands": [
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m py_compile groupctl.py demo.py",
+    "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe -m unittest discover -s tests -v"
+  ],
+  "automated_result": "pass",
+  "passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "human_checks_required": [],
+  "summary": "Counts refer to check commands; see command_results for actual runner output.",
+  "count_unit": "check_commands",
+  "command_results": [
+    {
+      "category": "build",
+      "argv": [
+        "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+        "-m",
+        "py_compile",
+        "groupctl.py",
+        "demo.py"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "category": "tests",
+      "argv": [
+        "C:\\Users\\sunny\\AppData\\Local\\Programs\\Python\\Python314\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_missing_fields_and_invalid_enums (test_workflow.Validation.test_missing_fields_and_invalid_enums) ... ok\ntest_dirty_work_is_preserved (test_workflow.Workflow.test_dirty_work_is_preserved) ... ok\ntest_final_rejects_code_changed_after_candidate (test_workflow.Workflow.test_final_rejects_code_changed_after_candidate) ... ok\ntest_full_three_person_conflict_final (test_workflow.Workflow.test_full_three_person_conflict_final) ... ok\ntest_no_checks_not_claimed_pass (test_workflow.Workflow.test_no_checks_not_claimed_pass) ... ok\ntest_pending_change_blocks_final (test_workflow.Workflow.test_pending_change_blocks_final) ... ok\ntest_review_does_not_merge_and_status_is_readonly (test_workflow.Workflow.test_review_does_not_merge_and_status_is_readonly) ... ok\ntest_secret_filename_refused (test_workflow.Workflow.test_secret_filename_refused) ... ok\ntest_semantic_incompatibility_despite_clean_merge (test_workflow.Workflow.test_semantic_incompatibility_despite_clean_merge) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 86.954s\n\nOK\n"
+    }
+  ],
+  "protocol_version": "0.1",
+  "event_id": "E-20261016T071711Z-P17-8ab26d2495fb",
+  "event_type": "test_result",
+  "group_id": "G01",
+  "person_id": "P17",
+  "created_at": "2026-10-16T07:17:11.089140Z",
+  "related_events": []
+}

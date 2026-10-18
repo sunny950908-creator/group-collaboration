@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Group collaboration protocol 0.1. Python 3.10+, Git; no API or server."""
+"""Group collaboration protocol 0.1. Helps multiple student + local AI pairs collaborate through Git; AI provides judgment and the tool performs repeatable mechanical operations. Requires Python 3.10+ and Git; GitHub hosts shared collaboration data; no API integration or custom server required."""
 import argparse
 import datetime as dt
 import json
@@ -50,24 +50,43 @@ ENUMS = {'verdict': ['accept','accept_with_changes','reject','needs_more_evidenc
          'automated_result': ['pass','fail','partial','not_available'],
          'result': ['success','failed','needs_human']}
 LISTS = 'related_events files_changed interface_changes tests_run known_issues evidence issues commands human_checks_required conflicts test_evidence known_limitations'.split()
+# Finalization evidence has no prescribed element schema in protocol 0.1.
+STRING_LISTS = [k for k in LISTS if k != 'test_evidence']
+TEXT_FIELDS = 'protocol_version event_id event_type group_id person_id created_at change_id branch commit summary question_id text verdict scope automated_result target_branch result merge_commit conflict_resolution_summary blocking_change_id requested_action canonical_commit candidate_report_path final_report_path initiated_by'.split()
 
 def validate(e):
+    if not isinstance(e, dict):
+        raise Error('Event must be an object')
     common = 'protocol_version event_id event_type group_id person_id created_at related_events'.split()
     kind = e.get('event_type')
+    if not isinstance(kind, str):
+        raise Error('event_type must be a string')
     if kind not in FIELDS:
         raise Error('Unsupported event_type')
     for k in common + FIELDS[kind].split():
         if k not in e:
             raise Error('Missing field: ' + k)
+    required = common + FIELDS[kind].split()
+    for k in TEXT_FIELDS:
+        if k in required and not isinstance(e[k], str):
+            raise Error(k + ' must be a string')
     if e['protocol_version'] != '0.1':
         raise Error('Unsupported protocol version')
     for k in ['event_id','person_id','group_id']:
         token(e[k])
-    if dt.datetime.fromisoformat(e['created_at'].replace('Z','+00:00')).tzinfo is None:
+    try:
+        timestamp = dt.datetime.fromisoformat(e['created_at'].replace('Z','+00:00'))
+    except ValueError as exc:
+        raise Error('created_at must be a valid ISO timestamp') from exc
+    if timestamp.tzinfo is None:
         raise Error('Timestamp must include timezone')
     for k in LISTS:
         if k in e and not isinstance(e[k], list):
             raise Error(k + ' must be an array')
+        if k in required and k in STRING_LISTS:
+            for i, value in enumerate(e[k]):
+                if not isinstance(value, str):
+                    raise Error(f'{k}[{i}] must be a string')
     for k, values in ENUMS.items():
         if k in e and e[k] not in values:
             raise Error('Invalid ' + k)
@@ -80,6 +99,9 @@ def validate(e):
     if kind == 'integration_result':
         if not isinstance(e['verification'], dict) or not all(k in e['verification'] for k in ['build','tests','semantic_review']):
             raise Error('Incomplete verification')
+        for k in ['build','tests','semantic_review']:
+            if not isinstance(e['verification'][k], str):
+                raise Error('verification.' + k + ' must be a string')
 
 class Repo:
     def __init__(self, path='.'):
@@ -180,12 +202,15 @@ class Repo:
         canonical=self.sha('origin/'+self.canonical)
         ev=self.events()
         seen=read(self.local/'sync.json').get('seen',[]) if (self.local/'sync.json').exists() else []
-        return dict(person_id=self.person,group_id=self.cfg['group_id'],branch=self.branch(),commit=self.sha(),
+        head=self.sha()
+        test_results=[e for e in ev if e['event_type']=='test_result']
+        return dict(person_id=self.person,group_id=self.cfg['group_id'],branch=self.branch(),commit=head,
                     canonical_commit=canonical,working_tree=self.git('status','--porcelain').stdout,
                     ahead_behind=self.git('rev-list','--left-right','--count','HEAD...'+canonical).stdout.strip(),
                     new_events=[e for e in ev if e['event_id'] not in seen],
                     published_local_changes=[e for e in ev if e['event_type']=='change_published' and e['person_id']==self.person],
-                    test_results=[e for e in ev if e['event_type']=='test_result'],
+                    test_results=test_results,
+                    current_commit_test_results=[e for e in test_results if e['commit']==head],
                     blockers=[e for e in ev if e['event_type']=='blocker'],
                     next_action='Inspect new events and blockers; SYNC before integration. Test evidence applies only to its recorded commit.')
 
@@ -204,7 +229,7 @@ class Repo:
                             raise Error('Check commands must be nonempty argv arrays')
                         argv=[sys.executable if a=='{python}' else a for a in argv]
                         try:
-                            p=subprocess.run(argv,cwd=work,text=True,encoding='utf-8',errors='replace',capture_output=True,timeout=120)
+                            p=subprocess.run(argv,cwd=work,text=True,encoding='utf-8',errors='replace',capture_output=True,timeout=300)
                             results.append(dict(category=category,argv=argv,exit_code=p.returncode,output=(p.stdout+p.stderr)[-20000:]))
                         except (OSError,subprocess.TimeoutExpired) as ex:
                             results.append(dict(category=category,argv=argv,exit_code=None,output=str(ex)))

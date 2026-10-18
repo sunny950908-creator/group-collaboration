@@ -133,6 +133,32 @@ class Workflow(unittest.TestCase):
         self.cli(self.b,'event',str(payload))
         self.assertIn('"hello"',(self.b/'app.py').read_text())
 
+    def test_status_test_evidence_requires_exact_head(self):
+        head=self.call(self.b,'git','rev-parse','HEAD').stdout.strip()
+        empty=self.cli(self.b,'status')
+        self.assertEqual(empty['test_results'],[])
+        self.assertEqual(empty['current_commit_test_results'],[])
+
+        # Evidence published on another branch can describe B's exact HEAD.
+        matching=self.cli(self.a,'test')
+        self.assertEqual(matching['commit'],head)
+        (self.c/'app.py').write_text('def greet():\n    return "other branch"\n\ndef count():\n    return 3\n')
+        self.commit(self.c,'independent version')
+        unrelated=self.cli(self.c,'test')
+        self.assertNotEqual(unrelated['commit'],head)
+        status=self.cli(self.b,'status')
+        self.assertEqual(status['commit'],head)
+        self.assertEqual(status['test_results'],[matching,unrelated])
+        self.assertEqual(status['current_commit_test_results'],[matching])
+
+        # Even a metadata-only descendant is a different commit, not tested HEAD.
+        (self.b/'note.md').write_text('New commit without a new test run.\n')
+        self.commit(self.b,'advance B beyond tested ancestor')
+        status=self.cli(self.b,'status')
+        self.assertNotEqual(status['commit'],head)
+        self.assertEqual(status['test_results'],[matching,unrelated])
+        self.assertEqual(status['current_commit_test_results'],[])
+
     def test_pending_change_blocks_final(self):
         self.change(self.a,'"hello"','"hello world"','Unintegrated important work')
         self.call(self.c,'git','checkout','main')

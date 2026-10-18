@@ -40,7 +40,7 @@ SYNC/PUB/INT/REV/TEST/STATUS/FINAL 是對 AI 說的提示指令；終端機執�
 }
 ```
 
-以上只是示例，須改成目標專案真的存在的檔案與測試。每個命令是 argv 陣列，不使用 shell。`{python}` 代表執行 groupctl 的 Python。檢查會在指定 commit 的臨時 worktree 執行，時限每命令 120 秒。測試需要的外部環境仍須自行安裝。checks 是本實作的可選擴充欄位，原規格必要欄位保持原義。
+以上只是示例，須改成目標專案真的存在的檔案與測試。每個命令是 argv 陣列，不使用 shell。`{python}` 代表執行 groupctl 的 Python。檢查會在指定 commit 的臨時 worktree 執行，時限每命令 300 秒。測試需要的外部環境仍須自行安裝。checks 是本實作的可選擴充欄位，原規格必要欄位保持原義。
 
 ## 驗證範圍與限制
 
